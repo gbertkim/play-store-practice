@@ -69,21 +69,18 @@ app.get('/books', (req, res) => {
         if(!['action', 'puzzle', 'strategy', 'casual', 'arcade', 'card'].includes(genres)){
             return res 
                 .status(400)
-                .send(`Genres must be default, action, puzzle, strategy, casual, arcade, or card `)
+                .send(`Genres must be none, action, puzzle, strategy, casual, arcade, or card `)
         }
     }
 
     if(genres) {
         const genreCap = genres.charAt(0).toUpperCase() + genres.slice(1);
         results
-            .filter(result => result.Genres = genreCap);
+            .filter(result => result.Genres === genreCap);
     }
   
     res
       .json(results);
   });
 
-
-  app.listen(8000, () => {
-    console.log('Server started on PORT 8000');
-  });
+  module.exports = app;
